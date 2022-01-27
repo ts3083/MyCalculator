@@ -28,29 +28,37 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="7"
-            android:layout_margin="2dp"/>
+            android:text="@string/_7"
+            android:onClick="onDigit"
+            android:layout_margin="2dp"
+            tools:ignore="UsingOnClickInXml" />
         <Button
             android:id="@+id/btneight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="8"
-            android:layout_margin="2dp"/>
+            android:text="@string/_8"
+            android:onClick="onDigit"
+            android:layout_margin="2dp"
+            tools:ignore="UsingOnClickInXml" />
         <Button
             android:id="@+id/btnnine"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="9"
-            android:layout_margin="2dp"/>
+            android:text="@string/_9"
+            android:onClick="onDigit"
+            android:layout_margin="2dp"
+            tools:ignore="UsingOnClickInXml" />
         <Button
             android:id="@+id/btndivide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="/"
-            android:layout_margin="2dp"/>
+            android:text="@string/divv"
+            android:onClick="onDigit"
+            android:layout_margin="2dp"
+            tools:ignore="UsingOnClickInXml" />
 
     </LinearLayout>
 
