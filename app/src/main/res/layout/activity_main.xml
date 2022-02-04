@@ -9,12 +9,12 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvinput"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@color/MainColor"
         android:padding="10dp"
         android:textSize="48sp"
-        android:text="@string/calc_text"
         android:gravity="end|bottom"
         />
 
@@ -33,7 +33,7 @@
             android:text="@string/_7"
             android:onClick="onDigit"
             android:layout_margin="2dp"
-            tools:ignore="UsingOnClickInXml" />
+            tools:ignore="NestedWeights,UsingOnClickInXml" />
         <Button
             android:id="@+id/btneight"
             android:layout_width="0dp"
@@ -56,10 +56,9 @@
             android:id="@+id/btndivide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="2dp"
             android:layout_weight="1"
             android:text="@string/divv"
-            android:onClick="onDigit"
-            android:layout_margin="2dp"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
@@ -77,7 +76,7 @@
             android:text="@string/_4"
             android:onClick="onDigit"
             android:layout_margin="2dp"
-            tools:ignore="UsingOnClickInXml" />
+            tools:ignore="NestedWeights,UsingOnClickInXml" />
         <Button
             android:id="@+id/btnfive"
             android:layout_width="0dp"
@@ -102,7 +101,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/multi"
-            android:onClick="onDigit"
             android:layout_margin="2dp"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
@@ -121,7 +119,7 @@
             android:text="@string/_1"
             android:onClick="onDigit"
             android:layout_margin="2dp"
-            tools:ignore="UsingOnClickInXml" />
+            tools:ignore="NestedWeights,UsingOnClickInXml" />
         <Button
             android:id="@+id/btntwo"
             android:layout_width="0dp"
@@ -146,7 +144,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/sub"
-            android:onClick="onDigit"
             android:layout_margin="2dp"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
@@ -157,32 +154,42 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         >
+        <Button
+            android:id="@+id/btndot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dotstr"
+            android:onClick="onDecimalPoint"
+            android:layout_margin="2dp"
+            tools:ignore="NestedWeights,UsingOnClickInXml" />
 
         <Button
             android:id="@+id/btnzero"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="@string/_0"
             android:onClick="onDigit"
             android:layout_margin="2dp"
-            tools:ignore="UsingOnClickInXml" />
+            tools:ignore="NestedWeights,UsingOnClickInXml" />
+
         <Button
             android:id="@+id/btnCLR"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_margin="2dp"
             android:layout_weight="1"
             android:text="@string/clr"
-            android:onClick="onDigit"
-            android:layout_margin="2dp"
+            android:onClick="onClick"
             tools:ignore="UsingOnClickInXml" />
+
         <Button
             android:id="@+id/btnplus"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/plus"
-            android:onClick="onDigit"
             android:layout_margin="2dp"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
@@ -191,7 +198,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnequal"
-        android:onClick="onDigit"
         tools:ignore="UsingOnClickInXml"
         android:text="@string/equl"
         android:layout_weight="1"/>
