@@ -59,6 +59,7 @@
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:text="@string/divv"
+            android:onClick="onOperator"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
@@ -102,6 +103,7 @@
             android:layout_weight="1"
             android:text="@string/multi"
             android:layout_margin="2dp"
+            android:onClick="onOperator"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
@@ -145,6 +147,7 @@
             android:layout_weight="1"
             android:text="@string/sub"
             android:layout_margin="2dp"
+            android:onClick="onOperator"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
@@ -191,6 +194,7 @@
             android:layout_weight="1"
             android:text="@string/plus"
             android:layout_margin="2dp"
+            android:onClick="onOperator"
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
