@@ -36,20 +36,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onDecimalPoint(view : View) {
-        if (!isinoperator && textNum && !lastDot && lastNumeric) {
+        if (textNum && !lastDot && lastNumeric) {
             tvInput?.append(".")
             lastDot = true // dot이 존재하는지 저장하는 변수
             lastNumeric = false // 마지막이 dot이 됨
-            isinoperator = true
         }
     }
 
     fun onOperator(view : View) {
         tvInput?.text?.let {
-            if(lastNumeric && !isOperatorAdded(it.toString())) {
+            if(!isinoperator && lastNumeric && !isOperatorAdded(it.toString())) {
                 tvInput?.append((view as Button).text)
                 lastNumeric = false
                 lastDot = false
+                isinoperator = true
             }
         }
     }
@@ -81,11 +81,45 @@ class MainActivity : AppCompatActivity() {
                     if (prefix.isNotEmpty()) {
                         one = prefix + one
                     }
-                    tvInput?.text = (one.toDouble() - two.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() - two.toDouble()).toString())
+                }else if (tvValue.contains("+")) {
+                    val splitValue = tvValue.split("+")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() + two.toDouble()).toString())
+                }else if (tvValue.contains("*")) {
+                    val splitValue = tvValue.split("*")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() * two.toDouble()).toString())
+                } else  {
+                    val splitValue = tvValue.split("/")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+                    tvInput?.text = removeZeroAfterDot((one.toDouble() / two.toDouble()).toString())
                 }
+
             } catch (e : ArithmeticException) {
                 e.printStackTrace()
             }
         }
+        isinoperator = false
+    }
+
+    private fun removeZeroAfterDot(result : String) : String {
+        var value = result
+        if (result.contains(".0")) {
+            value = result.substring(0, result.length - 2)
+        }
+        return value
     }
 }
