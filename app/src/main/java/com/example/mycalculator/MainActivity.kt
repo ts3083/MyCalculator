@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     var textNum : Boolean = false // 첨에는 숫자가 없음
     var lastDot : Boolean = false // 첨에는 dot도 없음
     var lastNumeric : Boolean = false // 마지막이 숫자인지 확인
+    var isinoperator : Boolean = false // 연산자가 들어있는지 확인
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +29,18 @@ class MainActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         tvInput?.text = ""
+        textNum = false
+        lastDot = false
+        lastNumeric = false
+        isinoperator = false
     }
 
     fun onDecimalPoint(view : View) {
-        if (textNum && !lastDot && lastNumeric) {
+        if (!isinoperator && textNum && !lastDot && lastNumeric) {
             tvInput?.append(".")
             lastDot = true // dot이 존재하는지 저장하는 변수
             lastNumeric = false // 마지막이 dot이 됨
+            isinoperator = true
         }
     }
 
@@ -56,6 +62,30 @@ class MainActivity : AppCompatActivity() {
                     || value.contains("*")
                     || value.contains("+")
                     || value.contains("-")
+        }
+    }
+
+    fun onEqual (view : View) {
+        if (lastNumeric) {
+            var tvValue = tvInput?.text.toString()
+            var prefix = ""
+            try {
+                if (tvValue.startsWith("-")) {
+                    prefix = "-"
+                    tvValue = tvValue.substring(1)
+                }
+                if (tvValue.contains("-")) {
+                    val splitValue = tvValue.split("-")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+                    if (prefix.isNotEmpty()) {
+                        one = prefix + one
+                    }
+                    tvInput?.text = (one.toDouble() - two.toDouble()).toString()
+                }
+            } catch (e : ArithmeticException) {
+                e.printStackTrace()
+            }
         }
     }
 }

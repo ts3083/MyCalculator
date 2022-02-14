@@ -199,11 +199,12 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnequal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnequal"
-        tools:ignore="UsingOnClickInXml"
+        android:layout_weight="1"
         android:text="@string/equl"
-        android:layout_weight="1"/>
+        android:onClick="onEqual"
+        tools:ignore="UsingOnClickInXml" />
 
 </LinearLayout>
